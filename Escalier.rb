@@ -1,8 +1,8 @@
-i = ARGV[0].to_i
-h = 0
+mes_espaces = ARGV[0].to_i
+diese = 0
 
-i.times do
-    i -= 1
-    h += 1
-    puts (" " * i + "#" * h )
+mes_espaces.times do
+    mes_espaces -= 1
+    diese += 1
+    puts (" " * mes_espaces + "#" * diese )
 end
