@@ -1,7 +1,8 @@
-marche = 4
-i = 0
+i = ARGV[0].to_i
+h = 0
 
-marche.times do
-    i = i + 1
-    puts (# * i)
+i.times do
+    i -= 1
+    h += 1
+    puts (" " * i + "#" * h )
 end
