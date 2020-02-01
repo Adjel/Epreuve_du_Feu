@@ -1,4 +1,4 @@
-ARGV.map!{|e| e.to_i}
+ARGV.map!(&:to_i)
 tab = ARGV
 
 
