@@ -14,6 +14,8 @@ def database(tableau)
     end
     tableau = tableau.each_slice(9).to_a
 end
+
+
 tableau = database(tableau)
 
 
@@ -74,12 +76,14 @@ def colonne(tableau)
         end
         tableau[j].each do |x|
             j += 1
-            puts tableau[j][index_de_colonne]
             colonne += [tableau[j][index_de_colonne]]
         end
     end
+    colonne = colonne.each_slice(9).to_a
     return colonne
 end
 
 
-colonne(tableau)
+colonnes = colonne(tableau)
+potencial_column = empty(colonnes)
+print potencial_column
