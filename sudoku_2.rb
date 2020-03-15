@@ -21,7 +21,10 @@ tableau = database(tableau)
 
 
 
-
+=begin
+print potencial_column
+print "\n #{potencial_line}"
+=end
 
 
 
@@ -43,33 +46,14 @@ potencial_line = empty(tableau)
 
 
 
-
-
-
-
-=begin
-#on crée les colonnes
-def colonne(tableau)
-    colonne = []
-    i = 0
-    tableau.each_with_index do |chiffres, index|
-        colonne += [tableau[index][i]]
-    end
-    while i != tableau.size
-        i += 1
-        
-    end
-    print colonne
-end
-=end
-
+#je crée ma méthode qui me donnera un tableau des colonnes de mon sudoku
 def colonne(tableau)
     count = 0
     index_de_colonne = 0
     colonne = []
     j = -1
     while count < tableau.size - 1
-        if j == 8
+        if j == tableau.size - 1
             j = -1
             count += 1
             index_de_colonne += 1
@@ -83,7 +67,12 @@ def colonne(tableau)
     return colonne
 end
 
-
+#on "capture" nos colonnes dans une varibale
 colonnes = colonne(tableau)
+#on trouve nos chiffres qui vont dans les cases vides dans nos colonnes
 potencial_column = empty(colonnes)
-print potencial_column
+
+
+#je crée une méthode qui me donnera un tableau des carrés du sudoku
+def carres(tableau)
+end
