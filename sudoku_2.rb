@@ -35,11 +35,6 @@ def empty(sudoku)
     potencial_data = []
     sudoku.each do |ligne|
         potencial_data += [soluce.difference(ligne)]
-    end
-    return potencial_data
-end
-
-
 #on récupère les chiffres manquand dans les lignes 
 potencial_line = empty(tableau)
 
@@ -75,4 +70,5 @@ potencial_column = empty(colonnes)
 
 #je crée une méthode qui me donnera un tableau des carrés du sudoku
 def carres(tableau)
+
 end
