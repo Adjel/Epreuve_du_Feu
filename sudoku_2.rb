@@ -116,4 +116,16 @@ def potencial_solution(empty, potencial)
 end
 
 complete_line = potencial_solution(lines, potencial_line)
-print complete_line
+complete_column = potencial_solution(colonnes, potencial_column)
+complete_case = potencial_solution(carres, potencial_carres)
+
+def definitive_solution(lines, colonnes, carres)
+    lines.map do |x|
+        x.map do |y|
+            print y
+        end
+    end
+end
+
+definitive_solution(complete_line, potencial_column, potencial_carres)
+
