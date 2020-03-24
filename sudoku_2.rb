@@ -1,4 +1,4 @@
-sudoku = File.open("sudoku_2.txt", "r+")
+sudoku = File.open("sudoku.txt", "r+")
 #sudoku_read = sudoku.read 
 tableau = sudoku.read.split('')
 tableau = tableau - ["-", "+", "\n", " ", "|"]
@@ -120,8 +120,7 @@ complete_column = potencial_solution(colonnes, potencial_column)
 complete_case = potencial_solution(carres, potencial_carres)
 
 
-def definitive_solution(lines, colonnes, carres)
-    
+def sudoku_completed(lines, colonnes, carres)
 
 end
 
