@@ -49,15 +49,20 @@ end
 
 
 def colonne_vide(ligne)
-    index_chiffre = -1
+    index_ligne = -1
     nombre = []
-    for chiffre_manquant in (1..9)
-        index_chiffre += 1
-        if chiffre_manquant != ligne[index_chiffre]
-            nombre = [chiffre_manquant]
+    for chiffre_possible in (1..9)
+        index_ligne += 1
+        puts "  #{ligne[index_ligne]}"
+        puts "             #{chiffre_possible}"
+        if chiffre_possible != ligne[index_ligne]
+            nombre = [chiffre_possible]
         end
+        puts "#{nombre}"
         chiffre_manquant = nombre.difference(ligne)
-        return chiffre_manquant
+        if chiffre_possible == 9
+            puts chiffre_manquant
+        end
     end
 end
 
