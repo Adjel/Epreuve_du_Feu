@@ -1,11 +1,13 @@
-tableau = File.open("hard_sudoku.txt", "r+")
-tableau = tableau.read.split('') - ["-", "+", "\n", " ", "|"]
+#tableau = ARGV[0]
 
-tableau.each_with_index do |x, i|
-    tableau[i] = tableau[i].to_i
+tableau = File.open("hard_sudoku.txt", "r+").read
+data = tableau.split('') - ["-", "+", "\n", " ", "|"]
+
+data.each_with_index do |x, i|
+    data[i] = data[i].to_i
 end
 
-sudoku = tableau.each_slice(9).to_a
+sudoku = data.each_slice(9).to_a
 
 
 complete = Array.new(9) { Array.new(9) {[1, 2, 3, 4, 5, 6, 7 , 8, 9]} }
@@ -188,18 +190,17 @@ end
 def check_solutions(sudoku, complete)
 
     check_line(sudoku, complete)
-        check_col(sudoku, complete)
-            check_block(sudoku, complete)
+    check_col(sudoku, complete)
+    check_block(sudoku, complete)
 
 end
 
 def sudoku_solution(sudoku, complete)
 
     check_solutions(sudoku, complete)
-        uniq_in_line(sudoku, complete)
-            uniq_in_column(sudoku, complete)
-                print sudoku
-                    return sudoku
+    uniq_in_line(sudoku, complete)
+    uniq_in_column(sudoku, complete)
+    return sudoku
 
 end
 
@@ -212,25 +213,45 @@ def sudoku_solved(sudoku, complete)
     while i < 81 && full == false
         
 
-            for line in 0..8
-                for col in 0..8
-                    if sudoku[line][col] == 0
-                        potencial_solve(sudoku, complete)
-                        full = false
-                        i = 0
-                    else
-                        i += 1
-                    end
+        for line in 0..8
+            for col in 0..8
+
+                full = true
+                
+                if sudoku[line][col] == 0
+                    potencial_solve(sudoku, complete)
+                    full = false
+                    i = 0
+                else
+                    i += 1
                 end
             end
+        end
         
     end
-    print "\n"
-    print sudoku
-    
 end
 
 
+def print_my_complete_sudoku(sudoku, complete)
 
+    sudoku_solution(sudoku, complete)
 
-sudoku_solution(sudoku, complete)
+    for line in 0...sudoku.count
+        for col in 0...sudoku[line].count
+
+            if col % 9 == 0 && line % 3 == 0 && line > 1
+                print "\n---+---+---\n"
+            elsif col % 3 == 0 && col > 0
+                print "|"
+            elsif col % 9 == 0 
+                print "\n"
+            end
+            print sudoku[line][col]
+
+        end
+    end
+    print "\n\n"
+
+end
+
+print_my_complete_sudoku(sudoku, complete)
